@@ -179,6 +179,72 @@ sudo docker start cadvisor
 
 ---
 
+purpose for using following tools:
+
+
+
+---
+
+### 🔹 1. Kibana (ELK Stack)
+
+* **Use**: Logs ko **search**, **analyze** aur **visualize** karne ke liye.
+* **Stack**: Elasticsearch + Logstash + Kibana (kabhi Beats bhi).
+* **Example**: Nginx, Apache, ya app logs ko collect karke Elasticsearch me store karte ho, phir Kibana se search aur graphs banate ho.
+* **Commands jo tumne likhe**:
+
+  ```bash
+  sudo apt install kibana -y
+  sudo systemctl enable kibana
+  sudo systemctl start kibana
+  ```
+
+  Ye Kibana ko install aur service start karne ke liye hain.
+
+---
+
+### 🔹 2. Prometheus Ecosystem
+
+Metrics based monitoring ke liye use hota hai (CPU, RAM, disk, container stats).
+
+**a) Node Exporter**
+
+* Server ke hardware/OS level metrics deta hai: CPU load, memory usage, disk I/O, network stats, etc.
+* Prometheus is data ko scrape karta hai.
+
+**b) cAdvisor (Container Advisor)**
+
+* Docker containers ka CPU, memory, network, filesystem stats deta hai.
+* Real-time container monitoring.
+
+**c) Grafana**
+
+* Visualization tool hai.
+* Prometheus ya dusre data sources se data lekar dashboards aur graphs banata hai.
+* Alerts bhi configure kar sakte ho.
+
+---
+
+### 📊 Quick Table
+
+| Tool              | Type              | Main Use                        |
+| ----------------- | ----------------- | ------------------------------- |
+| **Kibana**        | Log visualization | Logs search & analysis (ELK)    |
+| **Prometheus**    | Metrics DB        | Time-series metrics collection  |
+| **Node Exporter** | Exporter          | Server hardware/OS metrics      |
+| **cAdvisor**      | Exporter          | Docker container metrics        |
+| **Grafana**       | Visualization     | Dashboards & alerts for metrics |
+
+---
+
+👉 **Simple Guide**
+
+* **Logs check** karne hain → **ELK stack (Kibana)**
+* **Real-time CPU/RAM/Container performance** chahiye → **Prometheus + Grafana + Node Exporter + cAdvisor**
+
+Dono ko saath bhi use kar sakte ho:
+Logs ke liye ELK aur performance metrics ke liye Prometheus + Grafana.
+
+
 ✅ At this point you will have:
 
 * **Prometheus, Grafana, Node Exporter & cAdvisor installed**
